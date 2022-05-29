@@ -41,13 +41,13 @@ namespace TeamManagement.Controllers
         public async Task<ActionResult<User>> Postuser([FromBody] User user)
         {
             var newUser = await _teamRepository.Create(user);
-            return CreatedAtAction(nameof(GetUsers), new { id = newUser.id }, newUser);
+            return CreatedAtAction(nameof(GetUsers), new { id = newUser.UserId }, newUser);
         }
 
         [HttpPut]
         public async Task<ActionResult> PutUsers(int id, [FromBody] User user)
         {
-            if (id != user.id)
+            if (id != user.UserId)
             {
                 return BadRequest();
             }
@@ -64,7 +64,7 @@ namespace TeamManagement.Controllers
             if (userToDelete == null)
                 return NotFound();
 
-            await _teamRepository.Delete(userToDelete.id);
+            await _teamRepository.Delete(userToDelete.UserId);
             return NoContent();
         }
 

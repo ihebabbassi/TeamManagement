@@ -9,11 +9,11 @@ namespace TeamManagement.Models
 {
     public class User
     {
-        [Column("id")]
+        [Column("UserId")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Required]
-        public int id { get; set; }
+        public int UserId { get; set; }
 
         [Column("role")]
         [Required]
@@ -41,5 +41,10 @@ namespace TeamManagement.Models
         [Required]
         [StringLength(50)]
         public string password { get; set; }
+
+        public List<Request> Requests { get; set; }
+        
+        
+
     }
 }

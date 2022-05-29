@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamManagement.DataLayer;
 
 namespace TeamManagement.Migrations
 {
     [DbContext(typeof(TeamContext))]
-    partial class TeamContextModelSnapshot : ModelSnapshot
+    [Migration("20220528154440_fixreltnship")]
+    partial class fixreltnship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,9 +64,9 @@ namespace TeamManagement.Migrations
 
             modelBuilder.Entity("TeamManagement.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("UserId")
+                        .HasColumnName("id")
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -98,7 +100,7 @@ namespace TeamManagement.Migrations
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.HasKey("UserId");
+                    b.HasKey("id");
 
                     b.ToTable("Users");
                 });
